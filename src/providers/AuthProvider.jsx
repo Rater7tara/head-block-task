@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-import Loading from '../components/Loading/Loading';
 
 // Create AuthContext
 export const AuthContext = createContext();
@@ -21,9 +20,6 @@ const AuthProvider = ({ children }) => {
                 }),
             });
 
-            if (loading) {
-                return <Loading/>;
-              };
 
             const data = await response.json();
 

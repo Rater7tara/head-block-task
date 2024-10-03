@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'; // For alerts
 import Lottie from 'lottie-react';
 import loginAnimation from '../../../assets/login.json'; // Animation JSON
 import { AuthContext } from '../../../providers/AuthProvider'; // Auth context
+import Loading from '../../../components/Loading/Loading';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext); // Get signIn function from AuthContext
@@ -25,6 +26,10 @@ const Login = () => {
         console.log("Password:", password);
 
         setLoading(true); // Set loading state to true before making the request
+
+        if (loading) {
+            return <Loading/>;
+          }
 
         signIn(username, password)
             .then(() => {
