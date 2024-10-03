@@ -1,0 +1,11 @@
+.productCard{
+    width: 100%;
+    height: 100%;
+}
+.product-main-div{
+    background-image: url("https://i.ibb.co/1mskZ5v/snapedit-1701353315541.png");
+    background-size: cover;
+}
+.img{
+    width: 70%;
+}
