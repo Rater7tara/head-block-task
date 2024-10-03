@@ -6,7 +6,6 @@ const Main = () => {
     return (
         <div>
             <Outlet></Outlet>
-            <Login></Login>
         </div>
     );
 };

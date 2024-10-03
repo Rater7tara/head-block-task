@@ -7,25 +7,26 @@ import ErrorPage from "../Layout/ErrorPage";
 import Main from "../Layout/Main";
 import Login from "../pages/Login/Login/Login";
 import ProductList from "../pages/ProductList/ProductList";
+import SingleProduct from "../pages/ProductList/SingleProduct/SingleProduct";
 
 
   export const router = createBrowserRouter([
     {
       path: '/',
-      element: <Main></Main>,
-      errorElement: <ErrorPage></ErrorPage>,
+      element: <Main />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: '/',
-          element: <Home></Home>
-        },
-        {
-            path:'/login',
-            element:<Login></Login>
+          element: <Login />
         },
         {
             path:'/products',
-            element:<ProductList></ProductList>
+            element:<ProductList />
+        },
+        {
+            path: '/product/:id', 
+            element: <SingleProduct />
         },
         
       ]

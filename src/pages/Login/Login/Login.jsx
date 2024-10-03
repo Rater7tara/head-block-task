@@ -9,7 +9,7 @@ const Login = () => {
     const { signIn } = useContext(AuthContext); // Get signIn function from AuthContext
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    const from = location.state?.from?.pathname || '/'; // Use the from state or default to '/'
 
     const [username, setUsername] = useState(''); // Change from email to username
     const [password, setPassword] = useState('');
@@ -20,9 +20,12 @@ const Login = () => {
         const form = event.target;
         const username = form.username.value; // Use username from the input
         const password = form.password.value;
+
         console.log("Username:", username);
         console.log("Password:", password);
-        
+
+        setLoading(true); // Set loading state to true before making the request
+
         signIn(username, password)
             .then(() => {
                 Swal.fire({
@@ -31,7 +34,7 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
-                navigate(from, { replace: true });
+                navigate('/products', { replace: true }); // Navigate to All Products page
             })
             .catch((err) => {
                 console.error("Login Error: ", err);
@@ -41,9 +44,11 @@ const Login = () => {
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
+            })
+            .finally(() => {
+                setLoading(false); // Reset loading state
             });
     };
-    
 
     return (
         <div className="hero min-h-screen mt-7">
@@ -58,7 +63,7 @@ const Login = () => {
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Username</span> {/* Change to Username */}
+                                    <span className="label-text">Username</span>
                                 </label>
                                 <input
                                     type="text" // Changed type to text
