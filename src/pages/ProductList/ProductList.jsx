@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AllProducts from './AllProducts/AllProducts';
+import Loading from '../../components/Loading/Loading';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ const ProductList = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
 
     if (error) {
@@ -34,17 +35,15 @@ const ProductList = () => {
     }
 
     return (
-        <div>
-            <div className='product-main-div'>
-                <div className='bg-blue-900 bg-opacity-80 pb-16'>
-                    <h4 className='text-lg text-white font-bold text-center pt-4 mb-2'>_____Product List_____</h4>
-                    <h1 className='text-3xl text-white font-bold text-center'>Our Products</h1>
-                    <div className='grid md:grid-cols-2  lg:grid-cols-4 gap-4  mt-10 p-4 ' >
-                        {products.map(product => <AllProducts
-                            key={product._id}
-                            product={product}
-                        ></AllProducts>)}
-                    </div>
+        <div className='product-main-div'>
+            <div className='bg-blue-900 bg-opacity-80 pb-16'>
+                <h4 className='text-lg text-white font-bold text-center pt-4 mb-2'>_____Product List_____</h4>
+                <h1 className='text-3xl text-white font-bold text-center'>Our Products</h1>
+                <div className='grid md:grid-cols-2  lg:grid-cols-3 gap-7  mt-10 ps-7 pe-7' >
+                    {products.map(product => <AllProducts
+                        key={product.id}
+                        product={product}
+                    ></AllProducts>)}
                 </div>
             </div>
         </div>

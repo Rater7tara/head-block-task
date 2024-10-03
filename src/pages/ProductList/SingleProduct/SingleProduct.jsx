@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Loading from '../../../components/Loading/Loading';
 
 const SingleProduct = () => {
   const { id } = useParams(); // Assumes you're passing product ID in the URL
@@ -35,7 +36,7 @@ const SingleProduct = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   if (error) {

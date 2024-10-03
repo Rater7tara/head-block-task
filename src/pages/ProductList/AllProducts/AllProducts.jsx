@@ -7,6 +7,7 @@ const AllProducts = ({ product }) => {
     const { id, title, rating, price, images, stock, returnPolicy } = product;
     const navigate = useNavigate(); // Initialize the navigate function
 
+
     // Function to handle "Buy Now" button click
     const handleBuyNow = () => {
         // Navigate to the SingleProduct page with the product id
@@ -15,7 +16,7 @@ const AllProducts = ({ product }) => {
 
     return (
         <div className="productCard card bg-base-100 shadow-xl ">
-            <figure><img className='img mt-2' src={images} alt={title} /></figure>
+            <div className='img-div m-auto'><img className='img' src={images} alt={title} /></div>
             <div className="card-body">
                 <h2 className="card-title">
                     {title}
